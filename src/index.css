@@ -2,4 +2,60 @@
   margin: 0;
   padding: 0;
   font-family: Poppins;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Smooth scrolling for all devices */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base responsive font sizing */
+html {
+  font-size: 16px;
+}
+
+/* Tablet font scaling */
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+/* Mobile font scaling */
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Small mobile font scaling */
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+/* Very small mobile font scaling */
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  button, 
+  .nav-contact,
+  .hero-explore,
+  .hero-dot,
+  .hero-play {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }

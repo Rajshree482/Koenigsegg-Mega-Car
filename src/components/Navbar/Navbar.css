@@ -4,12 +4,15 @@
    align-items: center;
    margin: 40px 120px;
    color: white;
+   position: relative;
 }
+
 .nav-logo{
     font-family: Outfit;
     font-size: 42px;
     font-weight: 500;
 }
+
 .nav-menu{
     display: flex;
     align-items: center;
@@ -17,9 +20,130 @@
     font-size: 18px;
     gap: 90px;
 }
+
 .nav-contact{
     border-radius: 50px;
     padding: 10px 38px;
     background: #fff;
     color: #262626;
+    transition: all 0.3s ease;
+}
+
+.nav-contact:hover{
+    background: #f0f0f0;
+    transform: scale(1.05);
+}
+
+.nav-menu li{
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-menu li:hover{
+    color: #ccc;
+}
+
+.hamburger{
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.hamburger span{
+    width: 25px;
+    height: 3px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+/* Tablet Styles */
+@media screen and (max-width: 1024px) {
+    .nav{
+        margin: 30px 60px;
+    }
+    
+    .nav-logo{
+        font-size: 36px;
+    }
+    
+    .nav-menu{
+        gap: 50px;
+        font-size: 16px;
+    }
+    
+    .nav-contact{
+        padding: 8px 30px;
+    }
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .nav{
+        margin: 20px 30px;
+    }
+    
+    .nav-logo{
+        font-size: 28px;
+    }
+    
+    .hamburger{
+        display: flex;
+    }
+    
+    .nav-menu{
+        position: absolute;
+        top: 80px;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        width: 200px;
+        padding: 20px;
+        border-radius: 10px;
+        gap: 20px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .nav-menu.active{
+        transform: translateX(0);
+    }
+    
+    .nav-contact{
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
+
+/* Small Mobile Styles */
+@media screen and (max-width: 480px) {
+    .nav{
+        margin: 15px 20px;
+    }
+    
+    .nav-logo{
+        font-size: 24px;
+    }
+    
+    .nav-menu{
+        width: 180px;
+        padding: 15px;
+    }
+}
+
+/* Very Small Mobile Styles */
+@media screen and (max-width: 320px) {
+    .nav{
+        margin: 10px 15px;
+    }
+    
+    .nav-logo{
+        font-size: 20px;
+    }
+    
+    .nav-menu{
+        width: 160px;
+        padding: 10px;
+        font-size: 14px;
+    }
 }
