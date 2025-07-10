@@ -4,13 +4,35 @@
    align-items: center;
    margin: 40px 120px;
    color: white;
-   position: relative;
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   z-index: 1000;
+   background: rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(10px);
+   border-radius: 15px;
+   padding: 10px 40px;
+   margin: 20px 120px;
+   transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav.hidden {
+   transform: translateY(-100%);
+   opacity: 0;
 }
 
 .nav-logo{
     font-family: Outfit;
     font-size: 42px;
     font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-logo:hover{
+    color: #ff6b35;
+    transform: scale(1.05);
 }
 
 .nav-menu{
@@ -19,6 +41,25 @@
     list-style: none;
     font-size: 18px;
     gap: 90px;
+    position: relative;
+}
+
+.nav-menu li{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: color 0.3s ease;
+}
+
+.nav-menu li:hover{
+    color: #262626;
+}
+
+.nav-menu li.active {
+    color: #262626;
 }
 
 .nav-contact{
@@ -27,20 +68,59 @@
     background: #fff;
     color: #262626;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
 }
 
 .nav-contact:hover{
-    background: #f0f0f0;
+    background: #ff6b35;
+    color: white;
     transform: scale(1.05);
 }
 
-.nav-menu li{
-    cursor: pointer;
+/* Floating background that moves between nav items */
+.nav-menu::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0;
+    height: 40px;
+    background: #fff;
+    border-radius: 50px;
+    transform: translateY(-50%);
     transition: all 0.3s ease;
+    z-index: 1;
+    opacity: 0;
 }
 
-.nav-menu li:hover{
-    color: #ccc;
+.nav-menu:hover::before {
+    opacity: 1;
+}
+
+/* Individual hover positions for each nav item */
+.nav-menu li:nth-child(1):hover ~ ::before,
+.nav-menu li:nth-child(1).active ~ ::before {
+    width: 80px;
+    left: calc(0% + 10px);
+}
+
+.nav-menu li:nth-child(2):hover ~ ::before,
+.nav-menu li:nth-child(2).active ~ ::before {
+    width: 80px;
+    left: calc(25% + 10px);
+}
+
+.nav-menu li:nth-child(3):hover ~ ::before,
+.nav-menu li:nth-child(3).active ~ ::before {
+    width: 80px;
+    left: calc(50% + 10px);
+}
+
+.nav-menu li:nth-child(4):hover ~ ::before,
+.nav-menu li:nth-child(4).active ~ ::before {
+    width: 100px;
+    left: calc(75% + 10px);
 }
 
 .hamburger{
@@ -60,7 +140,8 @@
 /* Tablet Styles */
 @media screen and (max-width: 1024px) {
     .nav{
-        margin: 30px 60px;
+        margin: 15px 60px;
+        padding: 8px 30px;
     }
     
     .nav-logo{
@@ -75,12 +156,37 @@
     .nav-contact{
         padding: 8px 30px;
     }
+    
+    .nav-menu li:nth-child(1):hover ~ ::before,
+    .nav-menu li:nth-child(1).active ~ ::before {
+        width: 70px;
+        left: calc(0% + 8px);
+    }
+    
+    .nav-menu li:nth-child(2):hover ~ ::before,
+    .nav-menu li:nth-child(2).active ~ ::before {
+        width: 70px;
+        left: calc(25% + 8px);
+    }
+    
+    .nav-menu li:nth-child(3):hover ~ ::before,
+    .nav-menu li:nth-child(3).active ~ ::before {
+        width: 70px;
+        left: calc(50% + 8px);
+    }
+    
+    .nav-menu li:nth-child(4):hover ~ ::before,
+    .nav-menu li:nth-child(4).active ~ ::before {
+        width: 90px;
+        left: calc(75% + 8px);
+    }
 }
 
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
     .nav{
-        margin: 20px 30px;
+        margin: 10px 30px;
+        padding: 8px 20px;
     }
     
     .nav-logo{
@@ -93,7 +199,7 @@
     
     .nav-menu{
         position: absolute;
-        top: 80px;
+        top: 70px;
         right: 0;
         background: rgba(0, 0, 0, 0.95);
         flex-direction: column;
@@ -103,10 +209,31 @@
         gap: 20px;
         transform: translateX(100%);
         transition: transform 0.3s ease;
+        backdrop-filter: blur(10px);
     }
     
     .nav-menu.active{
         transform: translateX(0);
+    }
+    
+    .nav-menu::before {
+        display: none;
+    }
+    
+    .nav-menu li {
+        padding: 8px 15px;
+        border-radius: 8px;
+        transition: background 0.3s ease, color 0.3s ease;
+    }
+    
+    .nav-menu li:hover {
+        background: #fff;
+        color: #262626;
+    }
+    
+    .nav-menu li.active {
+        background: #fff;
+        color: #262626;
     }
     
     .nav-contact{
@@ -118,7 +245,8 @@
 /* Small Mobile Styles */
 @media screen and (max-width: 480px) {
     .nav{
-        margin: 15px 20px;
+        margin: 8px 20px;
+        padding: 6px 15px;
     }
     
     .nav-logo{
@@ -134,7 +262,8 @@
 /* Very Small Mobile Styles */
 @media screen and (max-width: 320px) {
     .nav{
-        margin: 10px 15px;
+        margin: 5px 15px;
+        padding: 5px 10px;
     }
     
     .nav-logo{
