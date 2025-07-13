@@ -43,7 +43,7 @@ const App = () => {
       
       {/* Explore Section */}
       <Explore />
-
+      
       {/* Contact Section */}
       <Contact />
     </div>

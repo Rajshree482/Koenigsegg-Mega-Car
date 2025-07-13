@@ -9,30 +9,66 @@
    left: 0;
    right: 0;
    z-index: 1000;
-   background: rgba(0, 0, 0, 0.1);
-   backdrop-filter: blur(10px);
-   border-radius: 15px;
-   padding: 10px 40px;
+   background: rgba(0, 0, 0, 0.15);
+   backdrop-filter: blur(20px);
+   border-radius: 25px;
+   padding: 15px 40px;
    margin: 20px 120px;
-   transition: transform 0.3s ease, opacity 0.3s ease;
+   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+   border: 1px solid rgba(255, 255, 255, 0.1);
+   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.nav::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: linear-gradient(135deg, rgba(17, 0, 0, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+   border-radius: 25px;
+   pointer-events: none;
+   z-index: -1;
 }
 
 .nav.hidden {
-   transform: translateY(-100%);
+   transform: translateY(-120%);
    opacity: 0;
 }
 
 .nav-logo{
-    font-family: Outfit;
+    font-family: 'Outfit', sans-serif;
     font-size: 42px;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(45deg, #ff6b35, #e9d97f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+.nav-logo::after {
+    content: '';
+    position: absolute;
+    
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ff6b35, #ff8f65);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-logo:hover{
-    color: #ff6b35;
-    transform: scale(1.05);
+    transform: scale(1.08);
+    filter: drop-shadow(0 4px 12px rgba(255, 107, 53, 0.3));
+}
+
+.nav-logo:hover::after {
+    width: 100%;
 }
 
 .nav-menu{
@@ -40,42 +76,95 @@
     align-items: center;
     list-style: none;
     font-size: 18px;
-    gap: 90px;
+    gap: 80px;
     position: relative;
+    font-weight: 500;
 }
 
 .nav-menu li{
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     z-index: 2;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 50px;
-    transition: color 0.3s ease;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.nav-menu li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border-radius: 50px;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-menu li:hover::before {
+    opacity: 1;
+    transform: scale(1.05);
 }
 
 .nav-menu li:hover{
-    color: #262626;
+    color: #fff;
+    transform: translateY(-2px);
+    text-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 }
 
 .nav-menu li.active {
     color: #262626;
+    font-weight: 600;
+}
+
+.nav-menu li.active::before {
+    opacity: 1;
+    background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
 }
 
 .nav-contact{
     border-radius: 50px;
-    padding: 10px 38px;
-    background: #fff;
+    padding: 12px 32px;
+    background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
     color: #262626;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     z-index: 2;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.nav-contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8f65 100%);
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+}
+
+.nav-contact:hover::before {
+    left: 0;
 }
 
 .nav-contact:hover{
-    background: #ff6b35;
     color: white;
-    transform: scale(1.05);
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
 }
 
 /* Floating background that moves between nav items */
@@ -85,13 +174,15 @@
     top: 50%;
     left: 0;
     width: 0;
-    height: 40px;
-    background: #fff;
+    height: 48px;
+    background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
     border-radius: 50px;
     transform: translateY(-50%);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1;
     opacity: 0;
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-menu:hover::before {
@@ -101,47 +192,59 @@
 /* Individual hover positions for each nav item */
 .nav-menu li:nth-child(1):hover ~ ::before,
 .nav-menu li:nth-child(1).active ~ ::before {
-    width: 80px;
-    left: calc(0% + 10px);
+    width: 90px;
+    left: calc(0% + 5px);
 }
 
 .nav-menu li:nth-child(2):hover ~ ::before,
 .nav-menu li:nth-child(2).active ~ ::before {
-    width: 80px;
-    left: calc(25% + 10px);
+    width: 90px;
+    left: calc(25% + 5px);
 }
 
 .nav-menu li:nth-child(3):hover ~ ::before,
 .nav-menu li:nth-child(3).active ~ ::before {
-    width: 80px;
-    left: calc(50% + 10px);
+    width: 100px;
+    left: calc(50% + 5px);
 }
 
 .nav-menu li:nth-child(4):hover ~ ::before,
 .nav-menu li:nth-child(4).active ~ ::before {
-    width: 100px;
-    left: calc(75% + 10px);
+    width: 110px;
+    left: calc(75% + 5px);
 }
 
 .hamburger{
     display: none;
     flex-direction: column;
     cursor: pointer;
-    gap: 4px;
+    gap: 5px;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.hamburger:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .hamburger span{
-    width: 25px;
+    width: 28px;
     height: 3px;
-    background: white;
-    transition: all 0.3s ease;
+    background: linear-gradient(90deg, #fff, #ff6b35);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 2px;
+}
+
+.hamburger:hover span {
+    background: linear-gradient(90deg, #ff6b35, #ff8f65);
 }
 
 /* Tablet Styles */
 @media screen and (max-width: 1024px) {
     .nav{
         margin: 15px 60px;
-        padding: 8px 30px;
+        padding: 12px 30px;
     }
     
     .nav-logo{
@@ -149,36 +252,36 @@
     }
     
     .nav-menu{
-        gap: 50px;
+        gap: 40px;
         font-size: 16px;
     }
     
     .nav-contact{
-        padding: 8px 30px;
+        padding: 10px 28px;
     }
     
     .nav-menu li:nth-child(1):hover ~ ::before,
     .nav-menu li:nth-child(1).active ~ ::before {
-        width: 70px;
-        left: calc(0% + 8px);
+        width: 80px;
+        left: calc(0% + 5px);
     }
     
     .nav-menu li:nth-child(2):hover ~ ::before,
     .nav-menu li:nth-child(2).active ~ ::before {
-        width: 70px;
-        left: calc(25% + 8px);
+        width: 80px;
+        left: calc(25% + 5px);
     }
     
     .nav-menu li:nth-child(3):hover ~ ::before,
     .nav-menu li:nth-child(3).active ~ ::before {
-        width: 70px;
-        left: calc(50% + 8px);
+        width: 90px;
+        left: calc(50% + 5px);
     }
     
     .nav-menu li:nth-child(4):hover ~ ::before,
     .nav-menu li:nth-child(4).active ~ ::before {
-        width: 90px;
-        left: calc(75% + 8px);
+        width: 100px;
+        left: calc(75% + 5px);
     }
 }
 
@@ -186,7 +289,7 @@
 @media screen and (max-width: 768px) {
     .nav{
         margin: 10px 30px;
-        padding: 8px 20px;
+        padding: 10px 20px;
     }
     
     .nav-logo{
@@ -199,17 +302,19 @@
     
     .nav-menu{
         position: absolute;
-        top: 70px;
+        top: 80px;
         right: 0;
         background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(20px);
         flex-direction: column;
-        width: 200px;
-        padding: 20px;
-        border-radius: 10px;
-        gap: 20px;
+        width: 220px;
+        padding: 25px;
+        border-radius: 20px;
+        gap: 15px;
         transform: translateX(100%);
-        transition: transform 0.3s ease;
-        backdrop-filter: blur(10px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     }
     
     .nav-menu.active{
@@ -221,23 +326,31 @@
     }
     
     .nav-menu li {
-        padding: 8px 15px;
-        border-radius: 8px;
-        transition: background 0.3s ease, color 0.3s ease;
+        padding: 12px 20px;
+        border-radius: 12px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        text-align: center;
+    }
+    
+    .nav-menu li::before {
+        border-radius: 12px;
     }
     
     .nav-menu li:hover {
-        background: #fff;
+        background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
         color: #262626;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
     }
     
     .nav-menu li.active {
-        background: #fff;
+        background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
         color: #262626;
+        box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
     }
     
     .nav-contact{
-        padding: 10px 20px;
+        padding: 12px 24px;
         font-size: 16px;
     }
 }
@@ -246,7 +359,7 @@
 @media screen and (max-width: 480px) {
     .nav{
         margin: 8px 20px;
-        padding: 6px 15px;
+        padding: 8px 15px;
     }
     
     .nav-logo{
@@ -254,8 +367,8 @@
     }
     
     .nav-menu{
-        width: 180px;
-        padding: 15px;
+        width: 200px;
+        padding: 20px;
     }
 }
 
@@ -263,7 +376,7 @@
 @media screen and (max-width: 320px) {
     .nav{
         margin: 5px 15px;
-        padding: 5px 10px;
+        padding: 6px 12px;
     }
     
     .nav-logo{
@@ -271,8 +384,8 @@
     }
     
     .nav-menu{
-        width: 160px;
-        padding: 10px;
+        width: 180px;
+        padding: 15px;
         font-size: 14px;
     }
 }

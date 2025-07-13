@@ -1,5 +1,5 @@
 import './About.css'
-import logo from '../../Assets/logo.jpg'
+import Logo from '../../Assets/Logo.png'
 import heritage from '../../Assets/heritage.jpg'
 import innovation from '../../Assets/innovation.jpg'
 import performance from '../../Assets/performance.png'
@@ -25,7 +25,7 @@ const About = () => {
               </p>
             </div>
             <div className="about-image">
-              <img src={logo} alt="Koenigsegg Logo" />
+              <img src={Logo} alt="Koenigsegg Logo" />
             </div>
           </div>
 
