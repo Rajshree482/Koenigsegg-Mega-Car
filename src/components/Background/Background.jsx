@@ -1,5 +1,5 @@
 import './Background.css'
-import Mycar from '../../Assets/Mycar.mp4'
+import KoenigseggFamily from '../../Assets/KoenigseggFamily.mp4'
 import gemera1 from '../../Assets/gemera1.png'
 import Jesko from '../../Assets/Jesko.jpg'
 import CC850 from '../../Assets/CC850.jpg'
@@ -10,7 +10,7 @@ const Background = ({playStatus,heroCount}) => {
     if (playStatus) {
          return (
             <video className='background fade-in' autoPlay loop >
-                <source src={Mycar} type='video/mp4' />
+                <source src={KoenigseggFamily} type='video/mp4' />
             </video>
          )
     }
