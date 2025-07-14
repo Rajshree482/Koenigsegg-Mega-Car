@@ -3,35 +3,12 @@ import './Contact.css'
 import { ChevronRight, Car, Package, CheckCircle, Clock, MapPin, Phone, Mail, User, Calendar, CreditCard, Truck, Shield, Star, Globe, Check, Banknote, QrCode } from 'lucide-react';
 
 import JeskoAttack2 from '../../Assets/JeskoAttack2.jpg';
-import gemera1  from '../../Assets/gemera1.png';
-import Gemera11  from '../../Assets/Gemera11.png'
 import Gemera2 from '../../Assets/Gemera2.png';
-import Gemera3 from '../../Assets/Gemera3.jpg';
-import Gemera4 from '../../Assets/Gemera4.jpg';
-import Gemera5 from '../../Assets/Gemera5.jpg';
-import Gemera6 from '../../Assets/Gemera6.jpg';
 import CC8502 from '../../Assets/CC8502.jpg';
-import CC8503 from '../../Assets/CC8503.jpg';
-import CC8504 from '../../Assets/CC8504.jpg';
-import CC8505 from '../../Assets/CC8505.jpg';
-import CC8506 from '../../Assets/CC8506.jpg';
-
-import Regera1 from '../../Assets/Regera1.jpg';
 import Regera2 from '../../Assets/Regera2.jpg';
-import Regera3 from '../../Assets/Regera3.jpg';
-import Regera4 from '../../Assets/Regera4.jpg';
 import Agera from '../../Assets/Agera.jpeg';
-import Agera2 from '../../Assets/Agera2.jpg';
-import Agera3 from '../../Assets/Agera3.jpg';
-import Agera4 from '../../Assets/Agera4.jpg';
 import Agerars1 from '../../Assets/Agerars1.jpg';
-import Agerars2 from '../../Assets/Agerars2.jpeg';
-import Agerars3 from '../../Assets/Agerars3.jpg';
-// import Agerars4 from '../../Assets/Agerars4.jpg';
 import AgeraS1 from '../../Assets/AgeraS1.jpg';
-import AgeraS2 from '../../Assets/AgeraS2.jpg';
-import AgeraS3 from '../../Assets/AgeraS3.jpg';
-import AgeraS4 from '../../Assets/AgeraS4.jpg';
 
 
 const Contact = () => {
