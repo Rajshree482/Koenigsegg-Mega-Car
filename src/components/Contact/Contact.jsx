@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useState, useEffect, useRef } from 'react'; // Import useRef
 import './Contact.css'
-import { ChevronRight, Car, Package, CheckCircle, Clock, MapPin, Phone, Mail, User, Calendar, CreditCard, Truck, Shield, Star, Globe, Check, Banknote, QrCode } from 'lucide-react';
+import { ChevronRight, Car, Package, CheckCircle, Clock, MapPin, Phone, Mail, User, Calendar, CreditCard, Truck, Shield, Star, Globe, Check, Banknote, QrCode, ChevronLeft } from 'lucide-react'; // Import ChevronLeft
 
 import JeskoAttack2 from '../../Assets/JeskoAttack2.jpg';
 import Gemera2 from '../../Assets/Gemera2.png';
@@ -54,6 +54,34 @@ const Contact = () => {
     { id: 'paint', name: 'Custom Paint Finish', price: '$75,000', description: 'Exclusive color matching' },
     { id: 'sound', name: 'Premium Sound System', price: '$25,000', description: 'Studio-quality audio' }
   ];
+
+  // Ref for the carousel container
+  const carouselRef = useRef(null);
+
+  // Function to scroll the carousel
+  const scrollCarousel = (direction) => {
+    if (carouselRef.current) {
+      const scrollAmount = carouselRef.current.offsetWidth / 1.5; // Scroll by a fraction of the container width
+      if (direction === 'left') {
+        carouselRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+  };
+
+  // Effect to scroll to the selected model when it changes
+  useEffect(() => {
+    if (selectedModel && carouselRef.current) {
+      const selectedElement = carouselRef.current.querySelector(`.car-model-card.selected`);
+      if (selectedElement) {
+        // Calculate scroll position to center the selected element
+        const scrollLeft = selectedElement.offsetLeft - (carouselRef.current.offsetWidth / 2) + (selectedElement.offsetWidth / 2);
+        carouselRef.current.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+      }
+    }
+  }, [selectedModel]);
+
 
   // Generate random 6-digit tracking ID
   const generateTrackingId = () => {
@@ -161,7 +189,7 @@ const Contact = () => {
           <h3 className="step-title">Choose Your Koenigsegg</h3>
           <p className="step-description">Select from our exclusive collection of hypercars</p>
         </div>
-        <div className="car-models-grid">
+        <div className="car-models-grid" ref={carouselRef}> {/* Add ref here */}
           {carModels.map((car) => (
             <div
               key={car.name}
@@ -181,6 +209,20 @@ const Contact = () => {
               )}
             </div>
           ))}
+        </div>
+        <div className="carousel-navigation"> {/* Add carousel navigation */}
+          <button
+            onClick={() => scrollCarousel('left')}
+            className="carousel-button"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            onClick={() => scrollCarousel('right')}
+            className="carousel-button"
+          >
+            <ChevronRight size={24} />
+          </button>
         </div>
         <button
           onClick={() => setPurchaseStep(2)}

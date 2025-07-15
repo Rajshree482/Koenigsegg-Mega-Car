@@ -55,24 +55,7 @@ const About = () => {
             </div>
           </div>
 
-          <div className="about-stats">
-            <div className="stat-item">
-              <h3>1994</h3>
-              <p>Founded</p>
-            </div>
-            <div className="stat-item">
-              <h3>25+</h3>
-              <p>Years of Excellence</p>
-            </div>
-            <div className="stat-item">
-              <h3>1500+</h3>
-              <p>Horsepower</p>
-            </div>
-            <div className="stat-item">
-              <h3>330+</h3>
-              <p>MPH Top Speed</p>
-            </div>
-          </div>
+          
 
           <div className="about-philosophy">
             <h2>Our Philosophy</h2>

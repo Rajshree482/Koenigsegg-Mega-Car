@@ -5,6 +5,7 @@ import Hero from "./components/Hero/Hero";
 import About from "./components/About/About";
 import Explore from "./components/Explore/Explore";
 import Contact from "./components/Contact/Contact";
+import Display from "./components/Display/Display";
 
 const App = () => {
   let heroData = [
@@ -40,6 +41,9 @@ const App = () => {
       
       {/* About Section */}
       <About />
+
+      {/* About Section */}
+      <Display />
       
       {/* Explore Section */}
       <Explore />
